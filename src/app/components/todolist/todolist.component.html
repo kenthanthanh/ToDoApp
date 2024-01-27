@@ -1,0 +1,36 @@
+<section class="main" v-show="todos.length">
+    <input
+      id="toggle-all"
+      class="toggle-all"
+      type="checkbox"
+      :checked="remaining === 0"
+      >
+      <!-- @change="toggleAll" -->
+    <label for="toggle-all">Mark all as complete</label>
+    <ul class="todo-list">
+      <li
+        v-for="todo in filteredTodos"
+        class="todo"
+        :key="todo.id"
+        :class="{ completed: todo.completed, editing: todo === editedTodo }"
+      >
+        <div class="view">
+          <input class="toggle" type="checkbox" v-model="todo.completed">
+          <!-- <label @dblclick="editTodo(todo)">{{ todo.title }}</label>
+          <button class="destroy" @click="removeTodo(todo)"></button> -->
+          <label ><Title></Title></label>
+          <button class="destroy" ></button>
+        </div>
+        <input
+          v-if="todo === editedTodo"
+          class="edit"
+          type="text"
+          v-model="todo.title"
+          >
+          <!-- @vue:mounted="({ el }) => el.focus()"
+          @blur="doneEdit(todo)"
+          @keyup.enter="doneEdit(todo)"
+          @keyup.escape="cancelEdit(todo)" -->
+      </li>
+    </ul>
+  </section>
