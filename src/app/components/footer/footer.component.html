@@ -1,25 +1,16 @@
-<footer class="footer" v-show="todos.length">
-    <span class="todo-count">
-      <!-- <strong>{{ remaining }}</strong>
-      <span>{{ remaining === 1 ? ' item' : ' items' }} left</span> -->
-      <strong>Remaining</strong>
-      <span>Remaining left</span>
-      
-    </span>
-    <ul class="filters">
-      <li>
-        <a href="#/all" :class="{ selected: visibility === 'all' }">All</a>
-      </li>
-      <li>
-        <a href="#/active" :class="{ selected: visibility === 'active' }">Active</a>
-      </li>
-      <li>
-        <a href="#/completed" :class="{ selected: visibility === 'completed' }">Completed</a>
-      </li>
-    </ul>
-    <!-- <button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining"> -->
-    <button class="clear-completed" @click="" v-show="todos.length > remaining">
-
-      Clear completed
-    </button>
-  </footer>
+<footer class="footer" v-show="dataService.todos.length">
+  <span class="todo-count">
+ 
+    <strong>{{ dataService.remaining}}</strong>
+    <span>{{ dataService.remaining <= 1 ? ' item' : ' items' }} left</span> 
+  </span>
+  <ul class="filters" *ngIf="dataService.filters">
+    <li *ngFor="let filter of dataService.keys; let i as index" (click) ="dataService.switchFilter(filter)">
+      <a href="#/{{filter}} " [class.selected] ="filter === dataService.filterType"> {{ filter[0].toUpperCase() + filter.slice(1) }}</a>
+    </li
+    >
+  </ul>
+  <button class="clear-completed" *ngIf="dataService.todos.length > dataService.remaining" (click) ="dataService.clearCompleted()" > 
+    Clear completed
+  </button>
+</footer>

@@ -1,9 +1,10 @@
-<header class="header">
-    <h1>todos</h1>
-    <input
-      class="new-todo"
-      autofocus
-      placeholder="What needs to be done?"
-      >
-      <!-- @keyup.enter="addTodo" -->
-  </header>
+ <header class="header">
+      <h1>{{title}}</h1>
+      <input
+        class="new-todo"
+        autofocus
+        placeholder="What needs to be done?"
+        [(ngModel)] ="dataService.newTodo"
+        (keyup.enter) ="dataService.addTodo(dataService.newTodo)"
+        >
+    </header>

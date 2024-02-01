@@ -331,6 +331,8 @@ html .clear-completed:active {
 	line-height: 19px;
 	text-decoration: none;
 	cursor: pointer;
+	color: green;
+	text-shadow: greenyellow;
 }
 
 .clear-completed:hover {
